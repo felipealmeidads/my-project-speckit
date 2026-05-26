@@ -3,6 +3,10 @@ alwaysApply: true
 ---
 
 <!-- SPECKIT START -->
-For additional context about technologies to be used, project structure,
-shell commands, and other important information, read the current plan
+For governance and non-negotiable rules, read `.specify/memory/constitution.md`
+(Bio Links: React 19 + TypeScript strict + Vite, config-first, static GitHub Pages).
+For feature-level technical context, read `specs/001-bio-links/plan.md`
+(research: `specs/001-bio-links/research.md`, data model: `specs/001-bio-links/data-model.md`,
+contracts: `specs/001-bio-links/contracts/`, quickstart: `specs/001-bio-links/quickstart.md`,
+design tokens: `design-system.md`).
 <!-- SPECKIT END -->
