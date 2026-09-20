@@ -29,12 +29,12 @@
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
 
-  --color-primary: #6366f1;
-  --color-bg: #0f172a;
-  --color-button-bg: #1e293b;
-  --color-button-text: #f8fafc;
-  --color-text: #f1f5f9;
-  --color-muted: #94a3b8;
+  --color-primary: #bd93f9;
+  --color-bg: #282a36;
+  --color-button-bg: #44475a;
+  --color-button-text: #f8f8f2;
+  --color-text: #f8f8f2;
+  --color-muted: color-mix(in srgb, #f8f8f2 55%, #282a36);
   --color-focus-ring: color-mix(in srgb, var(--color-primary) 60%, white);
 }
 
@@ -114,7 +114,10 @@ body {
 
 .profile-card__avatar {
   object-fit: cover;
+  object-position: center;
   display: block;
+  background-color: var(--color-button-bg);
+  border: 2px solid var(--color-primary);
 }
 
 .profile-card__avatar-fallback {
