@@ -18,29 +18,43 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]
+**Language/Version**: React 19 + TypeScript (strict) + Vite
 
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]
+**Primary Dependencies**: React, Vite, one icon library only (see constitution)
 
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]
+**Storage**: N/A — static site; all content in `src/config.ts`
 
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]
+**Testing**: Manual / visual at 320px; optional lint (`tsc --noEmit`) — no test framework required unless spec requests
 
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
+**Target Platform**: Static CDN; GitHub Pages (primary deploy target)
 
-**Project Type**: [e.g., library/cli/web-service/mobile-app/compiler/desktop-app or NEEDS CLARIFICATION]
+**Project Type**: Single-page static web app (bio links)
 
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]
+**Performance Goals**: Fast first paint; minimal JS bundle; no runtime server
 
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]
+**Constraints**: 320px mobile-first; WCAG AA; SEO in static HTML; config-only customization
 
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Scale/Scope**: Single profile page; no backend, auth, or CMS in v1
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+Reference: `.specify/memory/constitution.md` (principles I–VIII).
+
+| Gate | Requirement | Status |
+|------|-------------|--------|
+| G1 | `tsconfig` strict; no implicit `any`; function components only | ⬜ |
+| G2 | Props in named interfaces in `src/types.ts` | ⬜ |
+| G3 | No business logic inside `src/components/` | ⬜ |
+| G4 | User-facing customization only via `src/config.ts` | ⬜ |
+| G5 | Deps limited to React, TS, Vite, one icon lib | ⬜ |
+| G6 | `design-system.md` exists; UI uses its tokens | ⬜ |
+| G7 | 320px layout; links `aria-label`; images `alt`; WCAG AA contrast | ⬜ |
+| G8 | SEO metadata + structured data in static build output | ⬜ |
+| G9 | `vite build` → static `dist/` deployable to GitHub Pages without server config | ⬜ |
+
+Mark ✅ only when verified; document any ⬜ failure in Complexity Tracking below.
 
 ## Project Structure
 
@@ -65,39 +79,16 @@ specs/[###-feature]/
 -->
 
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
+design-system.md          # Tokens: color, type, spacing (constitution V)
+index.html
+public/
 src/
-├── models/
-├── services/
-├── cli/
-└── lib/
-
-tests/
-├── contract/
-├── integration/
-└── unit/
-
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+├── config.ts             # Sole customization surface (constitution III)
+├── types.ts              # Named prop/data interfaces (constitution I)
+├── components/           # Presentational UI only (constitution II)
+├── App.tsx
+└── main.tsx
+dist/                     # vite build output → GitHub Pages
 ```
 
 **Structure Decision**: [Document the selected structure and reference the real

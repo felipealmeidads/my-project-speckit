@@ -61,14 +61,14 @@ description: "Task list template for feature implementation"
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-Examples of foundational tasks (adjust based on your project):
+Examples of foundational tasks (bio links / constitution-aligned):
 
-- [ ] T004 Setup database schema and migrations framework
-- [ ] T005 [P] Implement authentication/authorization framework
-- [ ] T006 [P] Setup API routing and middleware structure
-- [ ] T007 Create base models/entities that all stories depend on
-- [ ] T008 Configure error handling and logging infrastructure
-- [ ] T009 Setup environment configuration management
+- [ ] T004 Create `design-system.md` tokens (color, typography, spacing)
+- [ ] T005 [P] Define interfaces in `src/types.ts` per constitution
+- [ ] T006 [P] Scaffold `src/config.ts` as sole customization surface
+- [ ] T007 Configure Vite + TypeScript strict (`strict: true`, no implicit any)
+- [ ] T008 [P] Add static SEO head + JSON-LD in `index.html` / build pipeline
+- [ ] T009 Configure GitHub Pages deploy (`base`, `dist/` publish docs)
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 

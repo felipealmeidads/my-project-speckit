@@ -81,8 +81,10 @@
 ## Requirements *(mandatory)*
 
 <!--
-  ACTION REQUIRED: The content in this section represents placeholders.
-  Fill them out with the right functional requirements.
+  Constitution alignment (`.specify/memory/constitution.md`):
+  - Content changes MUST map to `src/config.ts` fields, not ad hoc component edits
+  - Include accessibility (aria-label, alt, contrast) and SEO (meta, structured data) when relevant
+  - No backend, auth, or dynamic CMS unless explicitly approved as out-of-scope exception
 -->
 
 ### Functional Requirements
